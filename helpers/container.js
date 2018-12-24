@@ -3,10 +3,13 @@ class Container {
     this.registry = {};
   }
   register(name, dependency) {
-    this.registry[name] = dependecy;
+    this.registry[name] = dependency;
   }
   resolve(name) {
-    return new this.registry[name]();
+    return this.registry[name];
+  }
+  getKeysAndValues() {
+    return this.registry;
   }
 }
 

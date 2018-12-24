@@ -3,6 +3,7 @@ const { userSchema } = require('../validators/index');
 
 class Router {
   static async registration(request, response) {
+    return User.registration(request, response);
     // check body
     // send body to User router
     // or send msg that the body not match
