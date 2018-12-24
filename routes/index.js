@@ -13,6 +13,7 @@ class Router {
       const sequelize = container.resolve('sequelize');
       const userRegistered = UserHandler.register(body, sequelize);
       if (userRegistered.error) {
+        const error = userRegistered;
         return response.status(500).send(error);
       }
       return response.status(201).send(userRegistered.data);
