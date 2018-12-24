@@ -1,0 +1,20 @@
+{
+  "name": "agathodaemon",
+  "version": "1.0.0",
+  "description": "Simple backend for mercadito",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolás Riquelme",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jest": "^23.6.0",
+    "joi": "^14.3.0",
+    "pg": "^7.7.1",
+    "sequelize-cli": "^5.4.0"
+  }
+}
