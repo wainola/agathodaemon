@@ -4,17 +4,29 @@
   "description": "Simple backend for mercadito",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll",
+    "dev": "nodemon server.js",
+    "db": "docker exec -it abellio_db psql -U postgres -d abellio_db",
+    "bash": "docker exec -it agathodaemon bash"
   },
   "author": "Nicolás Riquelme",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "jest": "^23.6.0",
     "joi": "^14.3.0",
+    "jsonwebtoken": "^8.4.0",
+    "moment": "^2.23.0",
     "pg": "^7.7.1",
-    "sequelize-cli": "^5.4.0"
+    "sequelize": "^4.42.0",
+    "sequelize-cli": "^5.4.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "nodemon": "^1.18.9"
   }
 }
