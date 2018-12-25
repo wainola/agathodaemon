@@ -1,3 +1,6 @@
+const Joi = require('joi');
+const { userSchema } = require('../validators/index');
+const UserHandler = require('../handlers/User');
 class User {
   static async registration(request, response) {
     const { body } = request;
@@ -5,7 +8,8 @@ class User {
     if (isValidJson.error === null) {
       const { container } = request;
       const sequelize = container.resolve('sequelize');
-      const userRegistered = UserHandler.register(body, sequelize);
+      const userRegistered = await UserHandler.register(body, sequelize);
+      console.log('userRegistered', userRegistered);
       if (userRegistered.error) {
         const error = userRegistered;
         return response.status(500).send(error);
@@ -17,3 +21,5 @@ class User {
     return response.status(201).send(true);
   }
 }
+
+module.exports = User;

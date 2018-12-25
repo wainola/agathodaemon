@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const { userSchema } = require('../validators/index');
 const User = require('./User');
 
 class Router {
