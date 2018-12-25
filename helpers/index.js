@@ -12,7 +12,7 @@ const sequelize = new Sequelize(DATABASE_URL);
 // Testing the connection
 sequelize
   .authenticate()
-  .then(() => console.log('Success connection to the database [DAGDA_API]'))
+  .then(() => console.log('Success connection to the database [Agathodaemon]'))
   .catch(err => console.log('err::', err));
 
 const injectSequelize = (request, response, next) => {

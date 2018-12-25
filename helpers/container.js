@@ -11,6 +11,9 @@ class Container {
   getKeysAndValues() {
     return this.registry;
   }
+  getOnlyKeys() {
+    return Object.keys(this.registry);
+  }
 }
 
 module.exports = Container;

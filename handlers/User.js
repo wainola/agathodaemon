@@ -34,5 +34,15 @@ class UserHandler {
       return { error: true, info: e };
     }
   }
+  static async login(body, sequelize) {
+    const { user } = body;
+    const query = `
+    SELECT id FROM users WHERE id = ?`;
+    const valuesToInsert = [user.id];
+    try {
+    } catch (e) {
+      return { error: true, info: e };
+    }
+  }
 }
 module.exports = UserHandler;

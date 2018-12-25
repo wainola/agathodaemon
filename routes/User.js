@@ -18,7 +18,17 @@ class User {
     }
   }
   static async login(request, response) {
-    return response.status(201).send(true);
+    const { body } = request;
+    const isValidJson = Joi.validate(body, userLoginSchema);
+    if (isValidJson.error === null) {
+      const { container } = request;
+      const sequelize = container.resolve('sequelize');
+      const userLoged = await UserHandler.login(body, sequelize);
+      if (userLoged.error) {
+        return response.status(500).send(userLoged.error);
+      }
+      return response.status(200).send(userLoged.data);
+    }
   }
 }
 
