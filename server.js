@@ -17,7 +17,7 @@ app.get('/test', (request, response) =>
 );
 
 app.post('/registration', Router.registration);
-app.post('/login', Router.login);
+app.post('/login', checkExpiration, Router.login);
 
 app.listen(PORT, err => {
   if (err) console.error('Some error', err);
