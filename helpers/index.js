@@ -27,6 +27,7 @@ const checkExpiration = (request, response, next) => {
   if (!!token) {
     if (token.startsWith('Bearer')) token = token.slice(7, token.length);
     jwt.verify(token, SECRET, (err, decoded) => {
+      console.log('err, decoded', err, decoded)
       if (err)
         response.status(401).send({
           success: false,
