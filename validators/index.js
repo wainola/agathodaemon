@@ -8,6 +8,14 @@ const userSchema = Joi.object().keys({
   })
 });
 
+const userLoginSchema = Joi.object().keys({
+  user: Joi.object().keys({
+    email: Joi.string().required(),
+    password: Joi.string().required()
+  })
+})
+
 module.exports = {
-  userSchema
+  userSchema,
+  userLoginSchema
 };

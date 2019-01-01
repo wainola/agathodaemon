@@ -7,6 +7,7 @@ class Router {
   }
 
   static async login(request, response) {
+    console.log('login')
     return User.login(request, response);
   }
 }

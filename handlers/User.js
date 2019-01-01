@@ -35,9 +35,11 @@ class UserHandler {
     }
   }
   static async login(body, sequelize) {
+    console.log('login ctm!!!!!')
     const { user } = body;
+    console.log('user', user)
     const query = `
-    SELECT id FROM users WHERE id = ?`;
+    SELECT name, lastname, enail FROM users WHERE email = ?`;
     const valuesToInsert = [user.id];
     try {
     } catch (e) {

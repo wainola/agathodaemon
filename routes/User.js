@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { userSchema } = require('../validators/index');
+const { userSchema, userLoginSchema } = require('../validators/index');
 const UserHandler = require('../handlers/User');
 class User {
   static async registration(request, response) {
@@ -19,6 +19,7 @@ class User {
   }
   static async login(request, response) {
     const { body } = request;
+    console.log('body', body)
     const isValidJson = Joi.validate(body, userLoginSchema);
     if (isValidJson.error === null) {
       const { container } = request;

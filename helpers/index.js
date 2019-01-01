@@ -23,23 +23,23 @@ const injectSequelize = (request, response, next) => {
 };
 
 const checkExpiration = (request, response, next) => {
-  let token = request.headers('authorization');
+  let token = request.headers['authorization'];
   if (!!token) {
     if (token.startsWith('Bearer')) token = token.slice(7, token.length);
     jwt.verify(token, SECRET, (err, decoded) => {
-      console.log('err, decoded', err, decoded)
       if (err)
         response.status(401).send({
           success: false,
           msg: 'Token is not valid'
         });
+      const checkExpiredToken = checkIfExpired(decoded.ext)
+      if(checkExpiredToken) response.status(401).send({
+        success: false,
+        msg: 'Unauthorized'
+      })
+      console.log('token is valid')
       request.decoded = decoded;
       next();
-    });
-  } else {
-    return response.status(401).send({
-      success: false,
-      msg: 'Not authorized'
     });
   }
 };
@@ -49,6 +49,12 @@ const genUUUID = () => uuid.v4();
 const genJWT = email => jwt.sign({ JWT: email }, SECRET, { expiresIn: '24h' });
 
 const genCreatedAt = () => moment().format();
+
+const checkIfExpired = exp => {
+  const date = moment(exp*1000)
+  const dateToCompare = moment()
+  return moment(dateToCompare).isAfter(date)
+}
 
 module.exports = {
   injectSequelize,
